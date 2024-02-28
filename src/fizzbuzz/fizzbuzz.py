@@ -20,7 +20,7 @@ def fizzbuzz(n: int) -> Union[int, str]:
 
 
 def fizzbuzz_list(from_: int, to_: int) -> Iterable[Union[int, str]]:
-    return [fizzbuzz(n) for n in range(from_, to_)]
+    return [fizzbuzz(n) for n in range(from_, to_ + 1)]
 
 
 if __name__ == "__main__":

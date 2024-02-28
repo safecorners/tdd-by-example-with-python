@@ -1,40 +1,26 @@
 import logging
 
+import pytest
 from fizzbuzz.fizzbuzz import fizzbuzz, fizzbuzz_list
 
 logger = logging.getLogger(__name__)
 
 
-def test_fizzbuzz_1() -> None:
-    assert fizzbuzz(1) == 1
-
-
-def test_fizzbuzz_2() -> None:
-    assert fizzbuzz(2) == 2
-
-
-def test_fizzbuzz_3() -> None:
-    assert fizzbuzz(3) == "Fizz"
-
-
-def test_fizzbuzz_4() -> None:
-    assert fizzbuzz(4) == 4
-
-
-def test_fizzbuzz_5() -> None:
-    assert fizzbuzz(5) == "Buzz"
-
-
-def test_fizzbuzz_6() -> None:
-    assert fizzbuzz(6) == "Fizz"
-
-
-def test_fizzbuzz_15() -> None:
-    assert fizzbuzz(15) == "FizzBuzz"
-
-
-def test_fizzbuzz_30() -> None:
-    assert fizzbuzz(30) == "FizzBuzz"
+@pytest.mark.parametrize(
+    "n, expected",
+    [
+        (1, 1),
+        (2, 2),
+        (3, "Fizz"),
+        (4, 4),
+        (5, "Buzz"),
+        (6, "Fizz"),
+        (15, "FizzBuzz"),
+        (30, "FizzBuzz"),
+    ],
+)
+def test_fizzbuzz_1(n: int, expected: int | str) -> None:
+    assert fizzbuzz(n) == expected
 
 
 def test_fizzbuzz_list() -> None:
