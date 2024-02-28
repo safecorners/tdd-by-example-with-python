@@ -17,3 +17,7 @@ def test_one_should_be_1(calc: StringCalculator) -> None:
 
 def test_one_and_two_should_be_3(calc: StringCalculator) -> None:
     assert calc.add("1,2") == 3
+
+
+def test_handle_an_unknown_amount_of_numbers(calc: StringCalculator) -> None:
+    assert calc.add("1,100,2000") == 2101
