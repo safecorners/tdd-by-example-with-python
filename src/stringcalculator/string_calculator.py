@@ -1,28 +1,38 @@
-from typing import List
-
-
 class StringCalculator:
     def __init__(self) -> None:
-        ...
+        self.delimiter = ","
+        self.expression = ""
+
+    def get_delimiter(self) -> None:
+        """
+        Syntax: //[delimiter]\n[numbers...]
+        """
+        if self.expression.startswith("//"):
+            idx = self.expression.find("\n")
+            self.delimiter = self.expression[len("//") : idx]
+            self.expression = self.expression[
+                len("//") + len(self.delimiter) + len("\n") :
+            ]
+
+    def handle_new_lines(self, expression: str) -> str:
+        return expression.replace("\n", self.delimiter)
 
     def add(self, numbers: str) -> int:
-        if numbers == "":
-            return 0
+        self.expression = numbers
+        self.get_delimiter()
+
+        self.expression = self.handle_new_lines(self.expression)
+
         tokens = []
-        for character in numbers.split(","):
-            tokens.append(character)
+        for token in self.expression.split(self.delimiter):
+            if token.isdigit():
+                tokens.append(token)
 
-        queue = []
-        for token in tokens:
-            result = token.split("\n")
-            for t in result:
-                queue.append(t)
-
-        if not queue:
+        if not tokens:
             return 0
 
         sum = 0
-        for element in queue:
-            sum += int(element)
+        for token in tokens:
+            sum += int(token)
 
         return sum
