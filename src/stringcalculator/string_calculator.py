@@ -1,3 +1,6 @@
+import re
+
+
 class StringCalculator:
     def __init__(self) -> None:
         self.delimiter = ","
@@ -25,7 +28,7 @@ class StringCalculator:
 
         tokens = []
         for token in self.expression.split(self.delimiter):
-            if token.isdigit():
+            if re.match(r"^-?[0-9]+$", token):
                 tokens.append(token)
 
         if not tokens:
@@ -33,6 +36,9 @@ class StringCalculator:
 
         sum = 0
         for token in tokens:
-            sum += int(token)
+            number = int(token)
+            if number < 0:
+                raise Exception(f"negatives not allowed - {number}")
+            sum += number
 
         return sum

@@ -29,3 +29,9 @@ def test_handle_an_unknown_amount_of_numbers(calc: StringCalculator) -> None:
 
 def test_support_delimiters(calc: StringCalculator) -> None:
     assert calc.add("//,\n1,2,3") == 6
+
+
+def test_throw_exception_when_passed_negative_number(calc: StringCalculator) -> None:
+    with pytest.raises(Exception) as excinfo:
+        calc.add("1,2,-3")
+    assert str(excinfo.value) == "negatives not allowed - 3"
