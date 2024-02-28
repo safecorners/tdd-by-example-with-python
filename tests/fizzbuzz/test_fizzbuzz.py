@@ -11,3 +11,8 @@ def test_fizzbuzz_2() -> None:
 
 def test_fizzbuzz_3() -> None:
     assert fizzbuzz(3) == "Fizz"
+
+
+def test_fizzbuzz_4() -> None:
+    assert fizzbuzz(4) == 4
+

@@ -6,4 +6,5 @@ def fizzbuzz(n: int) -> Union[int, str]:
         return 1
     if n == 2:
         return 2
-    return "Fizz"
+    if n == 3:
+        return "Fizz"
