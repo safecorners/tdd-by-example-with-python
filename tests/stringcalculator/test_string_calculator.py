@@ -15,6 +15,10 @@ def test_one_should_be_1(calc: StringCalculator) -> None:
     assert calc.add("1") == 1
 
 
+def test_new_line_delimiter(calc: StringCalculator) -> None:
+    assert calc.add("1\n2,3") == 6
+
+
 def test_one_and_two_should_be_3(calc: StringCalculator) -> None:
     assert calc.add("1,2") == 3
 

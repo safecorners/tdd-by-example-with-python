@@ -1,13 +1,22 @@
+from typing import List
+
+
 class StringCalculator:
     def __init__(self) -> None:
         ...
 
     def add(self, numbers: str) -> int:
-        queue = []
-
+        if numbers == "":
+            return 0
+        tokens = []
         for character in numbers.split(","):
-            if character.isdigit():
-                queue.append(int(character))
+            tokens.append(character)
+
+        queue = []
+        for token in tokens:
+            result = token.split("\n")
+            for t in result:
+                queue.append(t)
 
         if not queue:
             return 0
