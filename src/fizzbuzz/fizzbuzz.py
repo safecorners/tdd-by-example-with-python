@@ -1,21 +1,26 @@
 from typing import Iterable, Union
 
 
+def is_multiple_of_three(n: int) -> bool:
+    return n % 3 == 0
+
+
+def is_multiple_of_five(n: int) -> bool:
+    return n % 5 == 0
+
+
 def fizzbuzz(n: int) -> Union[int, str]:
-    if n % 3 == 0 and n % 5 == 0:
+    if is_multiple_of_three(n) and is_multiple_of_five(n):
         return "FizzBuzz"
-    if n % 3 == 0:
+    if is_multiple_of_three(n):
         return "Fizz"
-    if n % 5 == 0:
+    if is_multiple_of_five(n):
         return "Buzz"
     return n
 
 
 def fizzbuzz_list(from_: int, to_: int) -> Iterable[Union[int, str]]:
-    result = []
-    for n in range(from_, to_ + 1):
-        result.append(fizzbuzz(n))
-    return result
+    return [fizzbuzz(n) for n in range(from_, to_)]
 
 
 if __name__ == "__main__":
