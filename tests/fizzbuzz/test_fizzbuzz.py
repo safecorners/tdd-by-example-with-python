@@ -1,4 +1,8 @@
-from fizzbuzz.fizzbuzz import fizzbuzz
+import logging
+
+from fizzbuzz.fizzbuzz import fizzbuzz, fizzbuzz_list
+
+logger = logging.getLogger(__name__)
 
 
 def test_fizzbuzz_1() -> None:
@@ -31,3 +35,11 @@ def test_fizzbuzz_15() -> None:
 
 def test_fizzbuzz_30() -> None:
     assert fizzbuzz(30) == "FizzBuzz"
+
+
+def test_fizzbuzz_list() -> None:
+    seq = fizzbuzz_list(1, 5)
+
+    logger.info(seq)
+
+    assert len(list(seq)) == 5
