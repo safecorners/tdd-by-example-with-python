@@ -35,10 +35,14 @@ class StringCalculator:
             return 0
 
         sum = 0
+        negatives = []
         for token in tokens:
             number = int(token)
             if number < 0:
-                raise Exception(f"negatives not allowed - {number}")
+                negatives.append(number)
             sum += number
+
+        if negatives:
+            raise Exception(f"negatives not allowed - {negatives}")
 
         return sum

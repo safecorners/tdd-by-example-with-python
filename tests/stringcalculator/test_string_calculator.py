@@ -34,4 +34,10 @@ def test_support_delimiters(calc: StringCalculator) -> None:
 def test_throw_exception_when_passed_negative_number(calc: StringCalculator) -> None:
     with pytest.raises(Exception) as excinfo:
         calc.add("1,2,-3")
-    assert str(excinfo.value) == "negatives not allowed - 3"
+    assert str(excinfo.value) == "negatives not allowed - [-3]"
+
+
+def test_throw_exception_when_passed_negative_numbers(calc: StringCalculator) -> None:
+    with pytest.raises(Exception) as excinfo:
+        calc.add("1,-22,-3")
+    assert str(excinfo.value) == "negatives not allowed - [-22, -3]"
