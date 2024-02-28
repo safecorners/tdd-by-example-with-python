@@ -8,6 +8,7 @@ packages = [
     {include = "money", from = "src"},
     {include = "fibonacci", from = "src"},
     {include = "fizzbuzz", from = "src"},
+    {include = "stringcalculator", from="src"}
 ]
 
 [tool.poetry.dependencies]
