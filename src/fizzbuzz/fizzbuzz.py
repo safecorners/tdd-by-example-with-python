@@ -1,20 +1,16 @@
 from typing import Iterable, Union
 
 
-def is_multiple_of_three(n: int) -> bool:
-    return n % 3 == 0
-
-
-def is_multiple_of_five(n: int) -> bool:
-    return n % 5 == 0
+def is_multiple_of(n: int, k: int) -> bool:
+    return n % k == 0
 
 
 def fizzbuzz(n: int) -> Union[int, str]:
-    if is_multiple_of_three(n) and is_multiple_of_five(n):
+    if is_multiple_of(n, 3) and is_multiple_of(n, 5):
         return "FizzBuzz"
-    if is_multiple_of_three(n):
+    if is_multiple_of(n, 3):
         return "Fizz"
-    if is_multiple_of_five(n):
+    if is_multiple_of(n, 5):
         return "Buzz"
     return n
 
