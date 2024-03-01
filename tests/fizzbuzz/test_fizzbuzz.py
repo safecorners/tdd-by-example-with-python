@@ -1,5 +1,5 @@
 import logging
-from typing import Iterable, Tuple
+from typing import Iterable, Tuple, Union
 
 import pytest
 from fizzbuzz.fizzbuzz import fizzbuzz, fizzbuzz_sequence
@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
     ],
 )
 def test_fizzbuzz(
-    policies: Iterable[Tuple[int, str]], n: int, expected: int | str
+    policies: Iterable[Tuple[int, str]], n: int, expected: Union[int, str]
 ) -> None:
     logger.info(policies)
     assert fizzbuzz(n, policies) == expected
