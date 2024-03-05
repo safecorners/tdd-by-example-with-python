@@ -1,41 +1,21 @@
-import logging
-from typing import Iterable, Tuple, Union
+from typing import Iterable
 
 import pytest
-from fizzbuzz.fizzbuzz import fizzbuzz, fizzbuzz_sequence
-
-logger = logging.getLogger(__name__)
+from fizzbuzz.fizzbuzz import Policy, fizzbuzz
 
 
 @pytest.mark.parametrize("policies", [([(3, "Fizz"), (5, "Buzz")])])
 @pytest.mark.parametrize(
     "n, expected",
     [
-        (1, 1),
-        (2, 2),
-        (3, "Fizz"),
-        (4, 4),
-        (5, "Buzz"),
-        (6, "Fizz"),
-        (15, "FizzBuzz"),
-        (30, "FizzBuzz"),
+        (3, ["1", "2", "Fizz"]),
+        (5, ["1", "2", "Fizz", "4", "Buzz"]),
+        (15, ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"]) # noqa: E501
     ],
-)
+)  # fmt: skip
 def test_fizzbuzz(
-    policies: Iterable[Tuple[int, str]], n: int, expected: Union[int, str]
+    policies: Iterable[Policy],
+    n: int,
+    expected: Iterable[str],
 ) -> None:
-    logger.info(policies)
     assert fizzbuzz(n, policies) == expected
-
-
-def test_fizzbuzz_with_no_condition() -> None:
-    result = [fizzbuzz(n, []) for n in range(1, 11)]
-    assert result == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-
-def test_fizzbuzz_sequence() -> None:
-    sequence = fizzbuzz_sequence(1, 15, [(3, "Fizz"), (5, "Buzz")])
-
-    logger.info(sequence)
-
-    assert len(list(sequence)) == 15

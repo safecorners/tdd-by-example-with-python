@@ -1,3 +1,3 @@
-virtualenvs.create = true
+virtualenvs.create = false
 virtualenvs.in-project = true
 virtualenvs.path = "./.venv"

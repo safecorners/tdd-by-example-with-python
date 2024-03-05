@@ -29,6 +29,7 @@ pre-commit = "^3.6.2"
 [tool.pytest.ini_options]
 addopts = [
     "--import-mode=importlib",
+    "-vv"
 ]
 pythonpath = ["src"]
 log_cli = true
